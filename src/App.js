@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {Button} from 'antd';
 import { updateScore } from './redux/actions/score.actions';
+import { getInitialScores } from './services/scores.service';
 
 import './App.css';
 
@@ -11,11 +12,11 @@ function App() {
 
   useEffect(() => {
     // TODO
-    
+    getInitialScores();
   }, []);
 
   const handleOnClick = () => {
-    dispatch(updateScore({name: 'haha', diff: -1}));
+    dispatch(updateScore({name: 'haha', diff: -1, isFromUi: true}));
   };
 
   return (
