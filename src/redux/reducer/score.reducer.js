@@ -14,7 +14,7 @@ const scoreReducer = (state = initialState, action) => {
             return updateScoreByName(action, state);
 
         default:
-            return initialState;
+            return state;
     }
 };
 
