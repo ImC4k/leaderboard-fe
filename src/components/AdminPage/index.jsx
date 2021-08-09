@@ -13,6 +13,7 @@ export default function AdminPage() {
 
     useEffect(() => {
         setIsShowSecretInputModal(isUndefined(secret));
+        setSecretInput(secret);
     }, [secret]);
 
     return (
