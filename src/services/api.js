@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BACKEND_ENDPOINT = 'http://localhost:8082';
+const BACKEND_ENDPOINT = 'http://localhost:8081';
 
 const instance = axios.create({
     baseURL: BACKEND_ENDPOINT
