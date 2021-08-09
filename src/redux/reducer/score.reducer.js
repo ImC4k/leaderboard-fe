@@ -1,6 +1,6 @@
 import { INIT_SCORE, UPDATE_SCORE } from "../actions/score.actions";
 import {findIndex} from 'lodash';
-import socket, { WS_ACTIONS } from "../../ws";
+import { wsUpdateScore } from '../../ws';
 
 const initialState = {
     scores: [],
@@ -26,7 +26,7 @@ function initScores(action, state) {
 function updateScoreByName(action, state) {
     const { name, diff, isFromUi } = action;
     if (isFromUi) {
-        socket.emit(WS_ACTIONS.UPDATE_SCORE, action);
+        wsUpdateScore(action);
         return state;
     }
     else {
