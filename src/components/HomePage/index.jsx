@@ -25,7 +25,8 @@ export default function HomePage() {
 			key: 'score',
 			width: '50vw',
 			align: 'center',
-			sortDirection: ['ascend']
+			defaultSortOrder: 'descend',
+			sorter: (a, b) => a.score - b.score
 		},
 	];
 
@@ -35,17 +36,17 @@ export default function HomePage() {
 
 	return (
 		<div className='App'>
-			<header className='App-header'>
-				{JSON.stringify(scores, null, 4)}
-
-				<Table 
-          dataSource={scores} 
-          columns={columns} 
-          />
-        <Button onClick={()=>{history.push('/admin')}}>
-          Admin
-        </Button>
-			</header>
+			{/* {JSON.stringify(scores, null, 4)} */}
+			<h1>
+				Leaderboard
+			</h1>
+			<Table 
+			dataSource={scores} 
+			columns={columns} 
+			/>
+			<Button onClick={()=>{history.push('/admin')}}>
+				Admin
+			</Button>
 		</div>
 	);
 }
