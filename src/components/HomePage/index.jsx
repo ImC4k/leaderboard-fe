@@ -13,14 +13,14 @@ export default function HomePage() {
 
 	const columns = [
 		{
-			title: 'Name',
+			title: '姓名',
 			dataIndex: 'name',
 			key: 'name',
 			width: '50vw',
 			align: 'center'
 		},
 		{
-			title: 'Score',
+			title: '積分',
 			dataIndex: 'score',
 			key: 'score',
 			width: '50vw',
@@ -38,7 +38,7 @@ export default function HomePage() {
 		<div className='App'>
 			{/* {JSON.stringify(scores, null, 4)} */}
 			<h1>
-				Leaderboard
+				大市集排行榜
 			</h1>
 			<Table 
 			dataSource={scores} 
