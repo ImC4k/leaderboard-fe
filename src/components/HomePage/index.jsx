@@ -16,16 +16,16 @@ export default function HomePage() {
 			title: 'Name',
 			dataIndex: 'name',
 			key: 'name',
-      width: '50vw',
-      align: 'center'
+			width: '50vw',
+			align: 'center'
 		},
 		{
 			title: 'Score',
 			dataIndex: 'score',
 			key: 'score',
-      width: '50vw',
-      align: 'center',
-      sortDirection: ['ascend']
+			width: '50vw',
+			align: 'center',
+			sortDirection: ['ascend']
 		},
 	];
 
