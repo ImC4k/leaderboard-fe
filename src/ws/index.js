@@ -2,7 +2,7 @@ import io from "socket.io-client";
 import store from '../redux/store';
 import { updateScore, UPDATE_SCORE } from "../redux/actions/score.actions";
 
-const socket = io.connect('ws://localhost:8081');
+const socket = io.connect('https://leaderboard-be.herokuapp.com/');
 const WS_ACTIONS = {
     UPDATE_SCORE: 'UPDATE_SCORE',
 };
