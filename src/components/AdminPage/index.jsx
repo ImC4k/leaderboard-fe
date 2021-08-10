@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { isUndefined } from 'lodash';
+import { isEmpty, isUndefined } from 'lodash';
 import { Button, Input, Modal, Select } from 'antd';
 import { setSecret } from '../../redux/actions/secret.actions';
 import { updateScore } from '../../redux/actions/score.actions';
+import { getInitialScores } from '../../services/scores.service';
 
 import './AdminPage.scss';
 
@@ -27,6 +28,12 @@ export default function AdminPage() {
 
     const [diff, setDiff] = useState(0);
 
+    useEffect(() => {
+        if (isEmpty(scores)) {
+            console.log('getting initial scores from api');
+            getInitialScores();
+        }
+	}, []);
 
     useEffect(() => {
         setIsShowSecretInputModal(isUndefined(secret));
@@ -49,6 +56,7 @@ export default function AdminPage() {
 
     const batchUpdateScore = (modifier) => {
         selectedPlayers.forEach(player => {
+            console.log(`dispatching for ${player}: ${parseInt(diff * modifier)}`);
             dispatch(updateScore({name: player, diff: parseInt(diff * modifier), isFromUi: true}));
         });
 
@@ -124,13 +132,13 @@ export default function AdminPage() {
                     <div className='player-modal-cta-group'>
                         <Button 
                             type='danger' 
-                            onClick={()=>{batchUpdateScore(-1); setIsShowPlayerModal(false)}}
+                            onClick={()=>{batchUpdateScore(-1); setIsShowMultiPlayerInputModal(false)}}
                             >
                             -
                         </Button>
                         <Button 
                             type='primary' 
-                            onClick={()=>{batchUpdateScore(1); setIsShowPlayerModal(false)}}
+                            onClick={()=>{batchUpdateScore(1); setIsShowMultiPlayerInputModal(false)}}
                             >
                             +
                         </Button>
