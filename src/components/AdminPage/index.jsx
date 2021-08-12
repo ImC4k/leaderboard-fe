@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { isEmpty, isUndefined } from 'lodash';
+import { isEmpty, isNull, isUndefined } from 'lodash';
 import { Button, Input, Modal, Select } from 'antd';
 import { setSecret } from '../../redux/actions/secret.actions';
 import { updateScore } from '../../redux/actions/score.actions';
@@ -33,7 +33,13 @@ export default function AdminPage() {
             console.log('getting initial scores from api');
             getInitialScores();
         }
-	});
+        if (isUndefined(secret) || isNull(secret)) {
+            setIsShowSecretInputModal(true);
+        }
+        else {
+            console.log(`secret is ${secret}`);
+        }
+	}, [setIsShowSecretInputModal, scores, secret]);
 
     useEffect(() => {
         setIsShowSecretInputModal(isUndefined(secret));
