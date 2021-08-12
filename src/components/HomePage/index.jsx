@@ -13,19 +13,20 @@ export default function HomePage() {
 
 	const columns = [
 		{
-			title: 'Name',
+			title: '姓名',
 			dataIndex: 'name',
 			key: 'name',
-      width: '50vw',
-      align: 'center'
+			width: '50vw',
+			align: 'center'
 		},
 		{
-			title: 'Score',
+			title: '積分',
 			dataIndex: 'score',
 			key: 'score',
-      width: '50vw',
-      align: 'center',
-      sortDirection: ['ascend']
+			width: '50vw',
+			align: 'center',
+			defaultSortOrder: 'descend',
+			sorter: (a, b) => a.score - b.score
 		},
 	];
 
@@ -35,17 +36,17 @@ export default function HomePage() {
 
 	return (
 		<div className='App'>
-			<header className='App-header'>
-				{JSON.stringify(scores, null, 4)}
-
-				<Table 
-          dataSource={scores} 
-          columns={columns} 
-          />
-        <Button onClick={()=>{history.push('/admin')}}>
-          Admin
-        </Button>
-			</header>
+			{/* {JSON.stringify(scores, null, 4)} */}
+			<h1>
+				大市集排行榜
+			</h1>
+			<Table 
+			dataSource={scores} 
+			columns={columns} 
+			/>
+			<Button onClick={()=>{history.push('/admin')}}>
+				Admin
+			</Button>
 		</div>
 	);
 }
