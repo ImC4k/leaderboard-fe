@@ -33,7 +33,7 @@ export default function AdminPage() {
             console.log('getting initial scores from api');
             getInitialScores();
         }
-	}, []);
+	});
 
     useEffect(() => {
         setIsShowSecretInputModal(isUndefined(secret));
